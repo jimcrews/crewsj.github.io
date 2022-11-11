@@ -44,6 +44,10 @@
 .posts-container table {
   border-collapse: collapse;
 }
+.posts-container table .bullot-icon {
+  position: relative;
+  bottom: -3px;
+}
 
 .posts-container table td {
   padding: 5px;
@@ -82,7 +86,11 @@
     width: 400px;
   }
 
-  .post-date {
+  .posts-container table {
+    margin-bottom: 50px;
+  }
+
+  tr > *:nth-child(2) {
     display: none;
   }
 }
