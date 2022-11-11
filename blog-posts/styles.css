@@ -1,0 +1,9 @@
+.post {
+  margin-top: 100px;
+  margin-left: 20%;
+  max-width: 800px;
+}
+
+.post-header {
+  border-bottom: 7px solid rgb(224, 224, 224);
+}
