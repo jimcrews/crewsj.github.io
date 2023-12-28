@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "title": "Deploy a React App to AWS",
+        "tags": [
+            "AWS",
+            "CI/CD"
+        ],
+        "slug": "deploy-a-react-app-to-aws",
+        "cover": "",
+        "date": "2023-12-28",
+        "markdown": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_markdown/deploy-a-react-app-to-aws.md",
+        "tldr": "This is what the post is about"
+    },
+    {
+        "id": 2,
+        "title": "Deploy a Kubernetes cluster to Civo Cloud",
+        "tags": [
+            "Kubernetes"
+        ],
+        "slug": "deploy-a-kubernetes-cluster-to-civo-cloud",
+        "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/k8s-banner.webp",
+        "date": "2023-12-30",
+        "markdown": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_markdown/deploy-a-react-app-to-aws.md",
+        "tldr": "A very big post"
+    }
+]
