@@ -10,7 +10,7 @@
         "cover": "",
         "date": "2023-12-28",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/deploy-a-react-app-to-aws.md",
-        "tldr": "Host your website on AWS for only a few dollars a month and get hands-on experience across products such as S3, CloudFront, Route53 and Certificate Manager. AWS has been a market leader since its inception. People and businesses of all sizes and orientations, including Fortune 500 companies, are either using or adopting the AWS cloud. But.. its beast - comprising over 200 products and services, and it's tough to know where to get started. Follow this guide to get your feet wet."
+        "tldr": "Host your website on AWS for only a few dollars a month and get hands-on experience across products such as S3, CloudFront, Route53 and Certificate Manager. AWS has been a market leader since its inception. People and businesses of all sizes and orientations, including Fortune 500 companies, are either using or adopting the AWS cloud. But.. its a beast - comprising over 200 products and services, and it's tough to know where to get started. Follow this guide to get your feet wet."
     },
     {
         "id": 2,
