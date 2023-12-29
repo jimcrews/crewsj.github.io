@@ -10,7 +10,7 @@ On to the project.
 
 I want to drive website content via changes to external files, such as JSON and Markdown files. That way, I won't need to deploy React to S3 every time new content is added. This is especially important when working with a CDN like Cloudfront, as content is cached there which needs to be invalidated on every deployment.
 
-For this first iteration I will pull the JSON and markdown using [Github Pages](https://pages.github.com/). JSON will describe each post, and will look like this:
+For this first iteration I will host the JSON and markdown using [Github Pages](https://pages.github.com/). JSON will describe each post, and the location of each post's markdown:
 
 ```json
 [
@@ -39,7 +39,7 @@ For this first iteration I will pull the JSON and markdown using [Github Pages](
 Working with React and AWS, The following sections describe each component of the application at a high level.
 
 ### Route 53
-Register a new domain or transfering an existing one. Route 53 offers a lot of amazing features such as intelligent routing and health checks capabilities. It also integrates with other AWS services using Alias records. This way, even if the IP addresses of the underlying resources should change, traffic will still be sent to the correct endpoint. I'll be using an Alias record to point to my Cloudfront distribution.
+Register a new domain or transfering an existing one. Route 53 offers a lot of amazing features such as intelligent routing and health check capabilities. It also integrates with other AWS services using Alias records. This way, even if the IP addresses of the underlying resources should change, traffic will still be sent to the correct endpoint. I'll be using an Alias record to point to my Cloudfront distribution.
 
 I registered the domain *crewsj.net*
 
@@ -72,4 +72,4 @@ Now that Cloudfront is setup, create a new Alias record to point to your distrib
 ## Conclusion
 That's it for now. Future improvements could include:
  - CI/CD using Github Actions for S3 deployment
- - Include a Database and API for web content delivery
+ - Use a Database and API for content instead of Github
