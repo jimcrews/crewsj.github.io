@@ -1,4 +1,6 @@
-Being proficient in a popular cloud platform is a good investment for the future, and essential for having a job title that has anything related to the word 'cloud'. So choosing AWS to build personal projects, I can hopefully learn more about the platform as well as whatever I'm using it for. There is a pretty steep learning curve, so getting started can be difficult. AWS can be a scary place due to the sheer size of it, and the always present danger of accidentally running up a massive bill (as has happened to many and well documented on hackernews).. But hopefully, by setting up Budgets and Alerts, and not ignoring any AWS emails, I'll avoid this. On to the project.
+Being proficient in a popular cloud platform is a good investment for the future, and essential for having a job title that has anything related to the word 'cloud'. So choosing AWS to build personal projects, I can hopefully learn more about the platform as well as whatever I'm using it for. There is a pretty steep learning curve, so getting started can be difficult. AWS can be a scary place due to the sheer size of it, and the always present danger of accidentally running up a massive bill (as has happened to many and well documented on hackernews).. But hopefully, by setting up Budgets and Alerts, and not ignoring any AWS emails, I'll avoid this. 
+
+On to the project.
 
 ## Architecture
 
