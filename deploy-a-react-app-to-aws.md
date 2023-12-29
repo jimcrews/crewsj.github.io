@@ -1,16 +1,12 @@
-Motivation: 
-
-1. **Learning**. The fastest and most effective way to learn anything is by doing it. Big companies don't use Heroku or Netlify to run their online businesses. AWS is a global supercomputer you can leverage at scale to do virtually anything you want. It’s broken down into Lego blocks of functionality that you can snap together in any configuration you want. Learning all the pieces, how to snap them together, take them apart, then snap them together again differently takes practice.
-
-2. **Value**. AWS is a pay-as-you-go service much like water or gas, you pay for what you use. In my experience, it's been worth it - so far only costing me a few dollars a month. Using free services from smaller hosting companies usually come with strict limits and lack of flexibility making it difficult to achieve your current/ future goals.
+Being proficient in a popular cloud platform is a good investment for the future, and essential for having a job title that has anything related to the word 'cloud'. So choosing AWS to build personal projects, I can hopefully learn more about the platform as well as whatever I'm using it for. There is a pretty steep learning curve, so getting started can be difficult. AWS can be a scary place due to the sheer size of it, and the always present danger of accidentally running up a massive bill (as has happened to many and well documented on hackernews).. But hopefully, by setting up Budgets and Alerts, and not ignoring any AWS emails, I'll avoid this. On to the project.
 
 ## Architecture
 
-*The following is the Architecture for the new blog*
+*The following is the Architecture for my new blog*
 
 ![Architecture Diagram](https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/architecture_diagram_01.png "Architecture Diagram")
 
-I want to drive website content via changes to external files, such as JSON and Markdown files. That way, I won't need to deploy React to S3 every time new content is added. This is especially important when working with a CDN like Cloudfront, as content is cached here which needs to be invalidated on every deployment.
+I want to drive website content via changes to external files, such as JSON and Markdown files. That way, I won't need to deploy React to S3 every time new content is added. This is especially important when working with a CDN like Cloudfront, as content is cached there which needs to be invalidated on every deployment.
 
 For this first iteration I will pull the JSON and markdown using [Github Pages](https://pages.github.com/). JSON will describe each post, and will look like this:
 
@@ -20,18 +16,18 @@ For this first iteration I will pull the JSON and markdown using [Github Pages](
         "id": 1,
         "title": "My First Post",
         "slug": "my-first-post",
-        "cover": "https://path-to-image.com/image.png",
+        "cover": "https://my-image.com/image.png",
         "date": "2023-12-28",
-        "markdown": "https://ac.github.io/web.github.io/post-md-file_1.md",
+        "markdown": "https://web.github.io/f1.md",
         "tldr": "post description here"
     },
     {
         "id": 2,
         "title": "My Second Post",
         "slug": "my-second-post",
-        "cover": "https://path-to-image.com/image.png",
+        "cover": "https://my-image.com/image.png",
         "date": "2023-12-30",
-        "markdown": "https://ac.github.io/web.github.io/post-md-file_2.md",
+        "markdown": "https://web.github.io/f2.md",
         "tldr": "A very big post"
     }
 ]
