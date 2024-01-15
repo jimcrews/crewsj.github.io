@@ -46,12 +46,12 @@ Apply this config into the namespace 'test':
 k apply -f nginx-deploy.yaml -n test
 ``` 
 
-Verify the new pods in the 'test' namespace using `k get pods -n test -o wide`:
+Verify the new pods in the 'test' namespace using `k get pods -n test -o wide` (Notice that pods got created on all nodes ):
 
 | NAME                          | READY | STATUS  | AGE   | NODE                    |
 |-------------------------------|-------|---------|-------|-------------------------|
 | nginx-deploy-846d6f46b7-8m9nx | 1/1   | Running | 2m17s | k3d-my-cluster-agent-2  |
-| nginx-deploy-846d6f46b7-hmzhr | 1/1   | Running | 2m17s | k3d-my-cluster-server-0 |
+| nginx-deploy-846d6f46b7-hmzhr | 1/1   | Running | 2m17s | **k3d-my-cluster-server-0** |
 | nginx-deploy-846d6f46b7-f8547 | 1/1   | Running | 2m17s | k3d-my-cluster-agent-0  |
 | nginx-deploy-846d6f46b7-nzjck | 1/1   | Running | 2m17s | k3d-my-cluster-agent-0  |
 | nginx-deploy-846d6f46b7-fk9dj | 1/1   | Running | 2m17s | k3d-my-cluster-agent-1  |
@@ -71,7 +71,7 @@ selector:
     app: nginx-deploy
 ```
 
-**Apply** this config into the namespace 'test':
+Apply this config into the namespace 'test':
 ```
 k apply -f nginx-service.yaml -n test
 ```
