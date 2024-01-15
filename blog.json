@@ -22,6 +22,6 @@
         "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/k8s-banner.webp",
         "date": "2024-01-15",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/kubernetes-getting-started.md",
-        "tldr": "Get started learning Kubernetes by creating a cluster and ensuring pods get placed on the correct nodes."
+        "tldr": "Get started learning Kubernetes by creating a local cluster and investigating how pods get placed on particular nodes."
     }
 ]

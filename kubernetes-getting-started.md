@@ -1,15 +1,13 @@
-Kubernetes is an open source platform for managing containerized workloads. This post goes over setting up a local cluster, and how the scheduler assigns pods to nodes.
+Kubernetes is an open source platform for managing containerized workloads. This post goes over setting up a local cluster, and then looking at how the scheduler places pods on particular nodes. *A pod is a group of 1 or more containers, and a node is a worker machine*.
+
+Minikube is popular. Due to its age there's a lot of support for it, however it can only run a single node cluster. In the "real world", clusters will typically spread across multiple nodes. Enter K3D. Like Minikube, K3D runs Kubernetes in Docker, but has support for multiple nodes, so that's what I'm using.
 
 ## Local Cluster Setup
-
-I've started diving into Kubernetes recently, and I wanted to get no-cost hands-on experience asap. Minikube has been a popular choice for local Kubernetes learning / development but it can only run a single node. In the "real world", clusters will typically spread across multiple nodes (or machines). Enter K3D. K3D runs Kubernetes in Docker (like Minikube), but has support for multiple nodes, so that's what I'm using for now.
 
 Follow the [docs](https://k3d.io/v5.6.0/#installation) to get K3D installed.
 [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) and [docker](https://docs.docker.com/get-docker/) are required. I'll also use the alias of 'k' for 'kubectl'
 
-There are two main ways to manage Kubernetes objects: **imperative** (with kubectl commands) and **declarative** (by writing yaml files and using kubectl apply).
-
-Lets create a cluster using the K3D [guide](https://k3d.io/v5.4.6/usage/exposing_services/). We'll also create the config files for each component and see how they link together:
+I'm following the [K3D Ingress Guide](https://k3d.io/v5.4.6/usage/exposing_services/) to get a cluster running, and expanding on each step.
 
 ### K3D Create Multi-Node Cluster
 
@@ -28,14 +26,14 @@ Lets take a look at what nodes are available using `k get nodes`
 | k3d-my-cluster-agent-2  | Ready  |                      | 35s | v1.27.5+k3s1 |
 
 
-I heard its bad practice to use the default namespace, so let's create a **new namespace** for all things going forward.
+I heard its bad practice to use the default namespace, so let's create a new namespace for all things going forward.
 ```
 k create namespace test
 ```
 
-### Deploy 3 nginx Containers into Cluster
+We'll create config files for each component so we can see how they join together at the end.
 
-> We'll create config files for each component so we can see how they join together at the end. 
+### Deploy 3 nginx Containers into Cluster
 
 Let's now create a deployment of 5 pods. By default, these pods will be placed on any random node, including the control-plane node.
 
@@ -143,7 +141,45 @@ k label nodes k3d-my-cluster-agent-2 size=Large
 
 Update the deployment config by including an 'Affinity' section:
 
-![node_affinity_deployment](https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/node_affinity_deployment.png "node_affinity_deployment")
+``` yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: nginx-deploy
+  name: nginx-deploy
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: nginx-deploy
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nginx-deploy
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: size
+                operator: In
+                values:
+                - Small
+
+status: {}
+
+```
+
 
 Now let's re-deploy the pods to the 'Small' nodes by adding 'affinity' rules into the config
 ```
