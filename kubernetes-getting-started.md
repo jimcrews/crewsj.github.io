@@ -1,13 +1,13 @@
 Kubernetes is an open source platform for managing containerized workloads. This post goes over setting up a local cluster, and then looking at how the scheduler places pods on particular nodes. *A pod is a group of 1 or more containers, and a node is a worker machine*.
 
-Minikube is popular. Due to its age there's a lot of support for it, however it can only run a single node cluster. In the "real world", clusters will typically spread across multiple nodes. Enter K3D. Like Minikube, K3D runs Kubernetes in Docker, but has support for multiple nodes, so that's what I'm using.
+Minikube is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes.. Due to its age there's a lot of support for it, however it can only run a single node cluster. In the "real world", clusters will typically spread across multiple nodes. Enter K3D. Like Minikube, K3D runs Kubernetes in Docker, but has support for multiple nodes, so that's what I'm using.
 
 ## Local Cluster Setup
 
 Follow the [docs](https://k3d.io/v5.6.0/#installation) to get K3D installed.
 [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) and [docker](https://docs.docker.com/get-docker/) are required. I'll also use the alias of 'k' for 'kubectl'
 
-I'm following the [K3D Ingress Guide](https://k3d.io/v5.4.6/usage/exposing_services/) to get a cluster running, and expanding on each step.
+I'm following the [K3D Ingress Guide](https://k3d.io/v5.4.6/usage/exposing_services/) to get a cluster running.
 
 ### K3D Create Multi-Node Cluster
 
@@ -18,15 +18,15 @@ k3d cluster create my-cluster -p "8081:80@loadbalancer"  --servers 1 --agents 3
 
 Lets take a look at what nodes are available using `k get nodes`
 
-| NAME                    | STATUS | ROLES                | AGE | VERSION      |
-|-------------------------|--------|----------------------|-----|--------------|
-| k3d-my-cluster-server-0 | Ready  | control-plane,master | 40s | v1.27.5+k3s1 |
-| k3d-my-cluster-agent-0  | Ready  |                      | 37s | v1.27.5+k3s1 |
-| k3d-my-cluster-agent-1  | Ready  |                      | 36s | v1.27.5+k3s1 |
-| k3d-my-cluster-agent-2  | Ready  |                      | 35s | v1.27.5+k3s1 |
+| NAME                    | STATUS | ROLES                | AGE |
+|-------------------------|--------|----------------------|-----|
+| k3d-my-cluster-server-0 | Ready  | control-plane,master | 40s |
+| k3d-my-cluster-agent-0  | Ready  |                      | 37s |
+| k3d-my-cluster-agent-1  | Ready  |                      | 36s |
+| k3d-my-cluster-agent-2  | Ready  |                      | 35s |
 
 
-I heard its bad practice to use the default namespace, so let's create a new namespace for all things going forward.
+I heard its bad practice to use the default namespace, so let's create a new namespace for all components going forward.
 ```
 k create namespace test
 ```
@@ -46,12 +46,12 @@ k create deployment nginx-deploy \
 > nginx-deploy.yaml
 ```
 
-apply config into namespace 'test'
+Apply this config into the namespace 'test':
 ```
 k apply -f nginx-deploy.yaml -n test
 ``` 
 
-check the new pods in the 'test' namespace using `k get pods -n test -o wide`.
+Check the new pods in the 'test' namespace using `k get pods -n test -o wide`.
 
 | NAME                          | READY | STATUS  | AGE   | NODE                    |
 |-------------------------------|-------|---------|-------|-------------------------|
@@ -69,7 +69,14 @@ A service is an abstraction that exposes a group of pods as a network service.
 ```
 k create service clusterip nginx --tcp=80:80 --dry-run=client -o yaml > nginx-service.yaml
 ```
-update the yaml selector app to point to our deployment: 'nginx-deploy'
+
+Update the yaml selector app to point to our deployment: 'nginx-deploy':
+```
+selector:
+    app: nginx-deploy
+```
+
+Apply this config into the namespace 'test':
 ```
 k apply -f nginx-service.yaml -n test
 ```
@@ -77,16 +84,17 @@ k apply -f nginx-service.yaml -n test
 ### Create Ingress
 Ingress lets us route traffic from outside the cluster to one or more services inside the cluster
 
-create the ingress object (copy config from [docs](https://kubernetes.io/docs/concepts/services-networking/ingress/)). Update the namespace.
+Create the ingress object - copy config from [docs](https://kubernetes.io/docs/concepts/services-networking/ingress/) to new file my_ingress.yaml.
+Apply this config into the namespace 'test':
 ```
 k apply -f my_ingress.yaml -n test
 ```
 
-We can now browse to http://localhost:8081/ and see the 'Welcome to nginx' page.
+**We can now browse to http://localhost:8081/ and see the 'Welcome to nginx' page.**
 
 These components hook up together using the following selectors:
 
-![nginx_ingress_config](https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/nginx_ingress_config.png "nginx_ingress_config")
+[![nginx_ingress_config](https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/nginx_ingress_config.png)](https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/nginx_ingress_config.png)
 
 ## Kubernetes Scheduler
 
