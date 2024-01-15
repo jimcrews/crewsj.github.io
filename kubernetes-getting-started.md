@@ -2,14 +2,10 @@ Kubernetes is an open source platform for managing containerized workloads. This
 
 Minikube is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes.. Due to its age there's a lot of support for it, however it can only run a single node cluster. In the "real world", clusters will typically spread across multiple nodes. Enter K3D. Like Minikube, K3D runs Kubernetes in Docker, but has support for multiple nodes, so that's what I'm using.
 
-If you're not interested in setting up a local cluster, skip to the [Kubernetes Scheduler](#kubernetes-scheduler) section.
-
 ## Local Cluster Setup
 
 Follow the [docs](https://k3d.io/v5.6.0/#installation) to get K3D installed.
 [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) and [docker](https://docs.docker.com/get-docker/) are required. I'll also use the alias of 'k' for 'kubectl'
-
-I'm following the [K3D Ingress Guide](https://k3d.io/v5.4.6/usage/exposing_services/) to get a cluster running.
 
 ### K3D Create Multi-Node Cluster
 
@@ -35,7 +31,7 @@ k create namespace test
 
 We'll create config files for each component so we can see how they join together at the end.
 
-### Deploy 3 nginx Containers into Cluster
+### Create 5 nginx Containers
 
 Let's now create a deployment of 5 pods. By default, these pods will be placed on any random node, including the control-plane node.
 
@@ -53,7 +49,7 @@ Apply this config into the namespace 'test':
 k apply -f nginx-deploy.yaml -n test
 ``` 
 
-Check the new pods in the 'test' namespace using `k get pods -n test -o wide`.
+Verify the new pods in the 'test' namespace using `k get pods -n test -o wide`:
 
 | NAME                          | READY | STATUS  | AGE   | NODE                    |
 |-------------------------------|-------|---------|-------|-------------------------|
@@ -72,7 +68,7 @@ A service is an abstraction that exposes a group of pods as a network service.
 k create service clusterip nginx --tcp=80:80 --dry-run=client -o yaml > nginx-service.yaml
 ```
 
-Update the yaml selector app to point to our deployment: 'nginx-deploy':
+We need to point the service to our containers. Update the yaml selector section:
 ```
 selector:
     app: nginx-deploy
@@ -94,7 +90,7 @@ k apply -f my_ingress.yaml -n test
 
 **We can now browse to http://localhost:8081/ and see the 'Welcome to nginx' page.**
 
-These components hook up together using the following selectors:
+This is what we have so far. Our cluster components are aware of eachother because of the selectors:
 
 [![nginx_ingress_config](https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/nginx_ingress_config.png)](https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/nginx_ingress_config.png)
 
