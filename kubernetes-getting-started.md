@@ -5,11 +5,11 @@ Minikube is marketed as 'local Kubernetes', focusing on making it easy to learn 
 ## Local Cluster Setup
 
 Follow the [docs](https://k3d.io/v5.6.0/#installation) to get K3D installed.
-[kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) and [docker](https://docs.docker.com/get-docker/) are required. I'll also use the alias of 'k' for 'kubectl'
+[kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) and [docker](https://docs.docker.com/get-docker/) are required. **I'll also be using the alias of 'k' for 'kubectl'**
 
 ### K3D Create Multi-Node Cluster
 
-Create a local cluster with 1 Control Plane, and 3 Worker Nodes and make it accessible via ingress (map the ingress port 80 to localhost:8081).
+Create a local cluster with 1 Control Plane, and 3 Worker Nodes and make it accessible via ingress (map the ingress port 80 to localhost:8081):
 ```
 k3d cluster create my-cluster -p "8081:80@loadbalancer"  --servers 1 --agents 3
 ```
@@ -23,17 +23,14 @@ Lets take a look at what nodes are available using `k get nodes`
 | k3d-my-cluster-agent-1  | Ready  |                      | 36s |
 | k3d-my-cluster-agent-2  | Ready  |                      | 35s |
 
-
-I heard its bad practice to use the default namespace, so let's create a new namespace for all components going forward.
+**A note on namespaces**: I heard its bad practice to use the default namespace, so let's create a new namespace for all components going forward.
 ```
 k create namespace test
 ```
 
-We'll create config files for each component so we can see how they join together at the end.
-
 ### Create 5 nginx Containers
 
-Let's now create a deployment of 5 pods. By default, these pods will be placed on any random node, including the control-plane node.
+Let's now **create a deployment** of 5 pods. By default, these pods will be placed on any random node, including the control-plane node.
 
 ```
 k create deployment nginx-deploy \
@@ -68,21 +65,22 @@ A service is an abstraction that exposes a group of pods as a network service.
 k create service clusterip nginx --tcp=80:80 --dry-run=client -o yaml > nginx-service.yaml
 ```
 
-We need to point the service to our containers. Update the yaml selector section:
+We need to point the service to our containers. Update the config 'selector' section before applying it:
 ```
 selector:
     app: nginx-deploy
 ```
 
-Apply this config into the namespace 'test':
+**Apply** this config into the namespace 'test':
 ```
 k apply -f nginx-service.yaml -n test
 ```
 
 ### Create Ingress
-Ingress lets us route traffic from outside the cluster to one or more services inside the cluster
+Ingress lets us route traffic from outside the cluster to one or more services inside the cluster.
 
-Create the ingress object - copy config from [docs](https://kubernetes.io/docs/concepts/services-networking/ingress/) to new file my_ingress.yaml.
+Create the ingress object by copying config from the kubernetes [docs](https://kubernetes.io/docs/concepts/services-networking/ingress/) to a new file called my_ingress.yaml.
+
 Apply this config into the namespace 'test':
 ```
 k apply -f my_ingress.yaml -n test
