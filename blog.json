@@ -14,14 +14,14 @@
     },
     {
         "id": 2,
-        "title": "Deploy a Kubernetes cluster to Civo Cloud",
+        "title": "Road to Kubernetes - Getting Started",
         "tags": [
             "Kubernetes"
         ],
-        "slug": "deploy-a-kubernetes-cluster-to-civo-cloud",
+        "slug": "kubernetes-getting-started",
         "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/k8s-banner.webp",
-        "date": "",
-        "markdown": "",
-        "tldr": ""
+        "date": "2024-01-15",
+        "markdown": "https://jimcrews.github.io/crewsj.github.io/kubernetes-getting-started.md",
+        "tldr": "Get started learning Kubernetes by creating a cluster and ensuring pods get placed on the correct nodes."
     }
 ]
