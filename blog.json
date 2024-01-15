@@ -1,6 +1,7 @@
 [
     {
         "id": 1,
+        "new": false,
         "title": "Deploy a React App to AWS",
         "tags": [
             "AWS",
@@ -14,6 +15,7 @@
     },
     {
         "id": 2,
+        "new": true,
         "title": "Road to Kubernetes - Getting Started",
         "tags": [
             "Kubernetes"
@@ -26,6 +28,7 @@
     },
     {
         "id": 3,
+        "new": false,
         "title": "Road to Kubernetes - Logging and Monitoring",
         "tags": [
             "Kubernetes"
