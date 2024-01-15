@@ -1,6 +1,6 @@
 Kubernetes is an open source platform for managing containerized workloads. This post goes over setting up a local cluster, and then looking at how the scheduler places pods on particular nodes. *A pod is a group of 1 or more containers, and a node is a worker machine*.
 
-Minikube is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes.. Due to its age there's a lot of support for it, however it can only run a single node cluster. In the "real world", clusters will typically spread across multiple nodes. Enter K3D. Like Minikube, K3D runs Kubernetes in Docker, but has support for multiple nodes, so that's what I'm using.
+Minikube is marketed as 'local Kubernetes', focusing on making it easy to learn and develop for Kubernetes.. Due to its age there's a lot of support for it, however it can only run a single node cluster. In the "real world", clusters will typically spread across multiple nodes. Enter K3D. Like Minikube, K3D runs Kubernetes in Docker, but has support for multiple nodes, so that's what I'm using.
 
 ## Local Cluster Setup
 
