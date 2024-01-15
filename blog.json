@@ -23,5 +23,17 @@
         "date": "2024-01-15",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/kubernetes-getting-started.md",
         "tldr": "Get started learning Kubernetes by creating a local cluster and investigating how pods get placed on particular nodes."
+    },
+    {
+        "id": 3,
+        "title": "Road to Kubernetes - Logging and Monitoring",
+        "tags": [
+            "Kubernetes"
+        ],
+        "slug": "kubernetes-logging-and-monitoring",
+        "cover": "",
+        "date": "",
+        "markdown": "",
+        "tldr": ""
     }
 ]
