@@ -36,7 +36,7 @@
         "slug": "civo-fastapi",
         "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/civo-logo.jpeg",
         "date": "2024-02-13",
-        "markdown": "",
+        "markdown": "https://jimcrews.github.io/crewsj.github.io/civo-fastapi.md",
         "tldr": "Create a FastAPI application, dockerize it, and deploy it to Civo Cloud. Civo is a kubernetes focused cloud provider that is offering 2 months free credits."
     }
 ]
