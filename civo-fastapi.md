@@ -1,32 +1,32 @@
-Let's create a FastAPI app, dockerize it, and deploy it to Civo. Although, before jumping in, I got stumped on the following issue that relates to running container images on different architecture. After I created the FastAPI container image, I tested it locally using k3d, then deployed it to CIVO cloud. However, the Pods would not start, and the Deployment was in error **MinimumReplicasUnavailable**. The Pods were logging error: `exec /usr/local/bin/uvicorn: exec format error`.
+Let's create a FastAPI app, dockerize it, and deploy it to Civo. Although, before jumping in, I got stumped on the following issue that relates to running container images on different architectures. After I created the FastAPI container image, I tested it locally using k3d, then deployed it to CIVO cloud. However, the Pods would not start, the Deployment was in error: **MinimumReplicasUnavailable**, and the Pods were logging error: `exec /usr/local/bin/uvicorn: exec format error`.
 
-The problem is that the image was built on my mac which has an M1 chip (ARM-based), so by default the Docker build command targets `arm64`. In Civo, the the Nodes *Architecture* is listed as `amd64`. 
+The problem is that the Docker image was built on my mac which has an M1 chip (ARM-based), so by default the Docker build command targets `arm64`. In Civo, the Nodes *Architecture* is listed as `amd64`. 
 
 To resolve, rebuild Docker image, targeting amd64: `--platform=linux/amd64`
 
 ## FastAPI
 Create a simple FastAPI API using the Docs - [https://fastapi.tiangolo.com](https://fastapi.tiangolo.com/#create-it) 
 
-1. create virtual python env: ```python -m venv .venv```
-2. activate env: ```source .venv/bin/activate```
-3. pip install fastapi ```pip install fastapi```
-4. pip install uvicorn ```pip install uvicorn```
-5. create simple app in main.py
-6. run app locally: ```uvicorn main:app --reload```
-7. test app locally: ```http://127.0.0.1:8000/```
-8. stop local uvicorn
+1. Create virtual python env: ```python -m venv .venv```
+2. Activate env: ```source .venv/bin/activate```
+3. Install fastapi ```pip install fastapi```
+4. Install uvicorn ```pip install uvicorn```
+5. Create simple app in main.py
+6. Run app locally: ```uvicorn main:app --reload```
+7. Test app locally: ```http://127.0.0.1:8000/```
+8. Stop local uvicorn
 
 ## Docker
 Dockerize the app using the Docs - [https://fastapi.tiangolo.com/deployment/docker/](https://fastapi.tiangolo.com/deployment/docker/) 
 
-1. create Dockerfile (https://fastapi.tiangolo.com/deployment/docker/)
-2. build docker image with tag: ```docker build -t k8s-fast-api .```
-3. run container forwarding port: ```docker run -p 8000:80 k8s-fast-api```
-4. test app locally: ```http://127.0.0.1:8000/```
-5. create Dockerhub repo ([https://hub.docker.com/](https://hub.docker.com/))
-6. build and tag with new Dockerhub tag ```docker build --platform=linux/amd64 -t jimcr/fast-api-k8s:0.0.2 .```
-7. login to docker using terminal: ```docker login```
-8. push to Dockerhub: ```docker push jimcr/fast-api-k8s:0.0.1```
+1. Create Dockerfile (https://fastapi.tiangolo.com/deployment/docker/)
+2. Build docker image with tag: ```docker build -t k8s-fast-api .```
+3. Run container forwarding port: ```docker run -p 8000:80 k8s-fast-api```
+4. Test app locally: ```http://127.0.0.1:8000/```
+5. Create Dockerhub repo ([https://hub.docker.com/](https://hub.docker.com/))
+6. Build and tag with new Dockerhub tag ```docker build --platform=linux/amd64 -t jimcr/fast-api-k8s:0.0.2 .```
+7. Login to docker using terminal: ```docker login```
+8. Push to Dockerhub: ```docker push jimcr/fast-api-k8s:0.0.1```
 
 
 ## Civo
