@@ -1,8 +1,10 @@
-Let's create a FastAPI app, dockerize it, and deploy it to Civo. Although, before jumping in, I got stumped on the following issue that relates to running container images on different architectures. After I created the FastAPI container image, I tested it locally using k3d, then deployed it to CIVO cloud. However, the Pods would not start, the Deployment was in error: **MinimumReplicasUnavailable**, and the Pods were logging error: `exec /usr/local/bin/uvicorn: exec format error`.
+Let's create a FastAPI app, dockerize it, and deploy it to Civo. Although, before jumping in, I got stumped on the following issue that relates to running container images on different architectures. After I created the FastAPI container image, I tested it locally using k3d, then deployed it to CIVO cloud. However, the Pods would not start, the Deployment was in error: **MinimumReplicasUnavailable**, and the Pods were logging error: **exec /usr/local/bin/uvicorn: exec format error**.
 
-The problem is that the Docker image was built on my mac which has an M1 chip (ARM-based), so by default the Docker build command targets `arm64`. In Civo, the Nodes *Architecture* is listed as `amd64`. 
+The problem is that the Docker image was built on my mac which has an M1 chip (ARM-based), so by default the Docker build command targets **arm64**. In Civo, the Nodes *Architecture* is listed as **amd64**. 
 
 To resolve, rebuild Docker image, targeting amd64: `--platform=linux/amd64`
+
+**Let's get started!**
 
 ## FastAPI
 Create a simple FastAPI API using the Docs - [https://fastapi.tiangolo.com](https://fastapi.tiangolo.com/#create-it) 
