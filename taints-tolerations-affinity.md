@@ -65,7 +65,8 @@ k label node kind-worker spray-type=mortein
 k label node kind-worker2 spray-type=brute
 ```
 
-Current state - Taints and Labels added to Nodes:
+### Current state - Taints and Labels added to Nodes:
+
 | NAME               | Taints                                | Label notes |
 |--------------------|---------------------------------------|-------------|
 | kind-control-plane | node-role.kubernetes.io/control-plane |             |
