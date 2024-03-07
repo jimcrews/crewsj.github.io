@@ -6,9 +6,9 @@ Use Taints and Toleration's with Node Affinity rules to ensure Pods get schedule
 
 ## Demonstration using local Cluster
 
-Our demo cluster consists of 1 control-plane node and 3 worker nodes.
+Our demo cluster consists of 1 control-plane (`kind-control-plane`) node and 3 worker nodes (`kind-worker`, `kind-worker2`, `kind-worker3`).
 
-The Control Plane node is tainted by default. We'll taint 2 worker nodes (kind-worker, and kind-worker2). 1 worker will be left untainted (kind-worker3).
+The Control Plane node is tainted by default. We'll add taints to 2 worker nodes (kind-worker, and kind-worker2). 1 worker will be left untainted (kind-worker3).
 
 ```
 k taint node kind-worker spray=mortein:NoSchedule
