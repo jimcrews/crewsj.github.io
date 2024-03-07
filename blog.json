@@ -28,7 +28,7 @@
     },
     {
         "id": 3,
-        "new": true,
+        "new": false,
         "title": "Deploy a Kubernetes cluster to Civo Cloud",
         "tags": [
             "Kubernetes"
@@ -38,5 +38,18 @@
         "date": "2024-02-13",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/civo-fastapi.md",
         "tldr": "Create a FastAPI application, dockerize it, and deploy it to Civo Cloud. Civo is a kubernetes focused cloud provider that is offering 2 months free credits."
+    },
+    {
+        "id": 4,
+        "new": true,
+        "title": "Control Scheduling using Taints and Tolerations with Node Affinity",
+        "tags": [
+            "Kubernetes"
+        ],
+        "slug": "taints-tolerations-affinity",
+        "cover": "",
+        "date": "2024-03-07",
+        "markdown": "https://jimcrews.github.io/crewsj.github.io/taints-tolerations-affinity.md",
+        "tldr": "A combination of Taints and Toleration's, and Node Affinity rules can be used together to completely dedicate nodes for specific pods."
     }
 ]
