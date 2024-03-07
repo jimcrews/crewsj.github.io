@@ -15,7 +15,7 @@ k taint node kind-worker spray=mortein:NoSchedule
 k taint node kind-worker2 spray=brute:NoSchedule
 ```
 
-Current state - Taints added to Nodes:
+### Current state - Taints added to Nodes:
 
 | NAME               | Taints                                |
 |--------------------|---------------------------------------|
@@ -25,7 +25,7 @@ Current state - Taints added to Nodes:
 | kind-worker3       |                                       |
 
 
-Create Pods
+### Create Pods
 
 ```
 k run mortein-pod --image=nginx
@@ -39,7 +39,7 @@ Pods run on untainted nodes only, because no Toleration's have been applied to e
 | brute-pod   | 1/1   | Running | kind-worker3 |
 | mortein-pod | 1/1   | Running | kind-worker3 |
 
-update both pods to include toleration's. (mortein example below).
+### update both pods to include toleration's. (mortein example below).
 
 ```
   tolerations:
@@ -58,7 +58,8 @@ This time, the _brute_ Pod is allowed to run on the _brute_ Node and does so, bu
 
 So Taints and Tolerations are not enough to ensure Pods land where we want them to. In order to make sure _brute_ runs on `kind-worker2`, and _mortein_ runs on `kind-worker`, we need to add labels to the Nodes, and Affinity rules to the Pods. 
 
-Label Nodes
+### Label Nodes
+
 ```
 k label node kind-worker spray-type=mortein
 k label node kind-worker2 spray-type=brute
@@ -73,7 +74,7 @@ Current state - Taints and Labels added to Nodes:
 | kind-worker3       |                                       |             |
 
 
-Add Node Affinity rules to Pods. (mortein example below).
+### Add Node Affinity rules to Pods. (mortein example below).
 
 ```
   affinity:
