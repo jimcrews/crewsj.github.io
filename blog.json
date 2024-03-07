@@ -47,7 +47,7 @@
             "Kubernetes"
         ],
         "slug": "taints-tolerations-affinity",
-        "cover": "s3://blog.crewsj.net/shared_images/Kubernetes-Scheduling.png",
+        "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/Kubernetes-Scheduling.png",
         "date": "2024-03-07",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/taints-tolerations-affinity.md",
         "tldr": "A combination of Taints and Toleration's, and Node Affinity rules can be used together to completely dedicate nodes for specific pods."
