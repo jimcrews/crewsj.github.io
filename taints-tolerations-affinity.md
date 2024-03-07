@@ -26,20 +26,23 @@ k taint node kind-worker2 spray=brute:NoSchedule
 
 
 ### Create Pods
+We'll create 2 standard nginx pods:
 
 ```
 k run mortein-pod --image=nginx
 k run brute-pod --image=nginx
 ```
 
-Pods run on untainted nodes only, because no Toleration's have been applied to either Pod. (remember, kind-worker3 is untainted)
+These pods will run on untainted nodes only, because no Toleration's have been applied yet. (remember, kind-worker3 is untainted)
 
 | NAME        | READY | STATUS  | NODE         |
 |-------------|-------|---------|--------------|
 | brute-pod   | 1/1   | Running | kind-worker3 |
 | mortein-pod | 1/1   | Running | kind-worker3 |
 
-### update both pods to include toleration's. (mortein example below).
+### update both pods to include toleration's
+
+Update the pods to include a toleration section (mortein example below):
 
 ```
   tolerations:
@@ -75,7 +78,9 @@ k label node kind-worker2 spray-type=brute
 | kind-worker3       |                                       |             |
 
 
-### Add Node Affinity rules to Pods. (mortein example below).
+### Add Node Affinity rules to Pods
+
+Update the pods to include a affinity section (mortein example below):
 
 ```
   affinity:
@@ -88,6 +93,7 @@ k label node kind-worker2 spray-type=brute
             values:
             - mortein
 ```
+
 After re-creating the pods, the scheduler places them exactly where we want them:
 
 | NAME        | READY | STATUS  | NODE         |
