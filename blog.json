@@ -41,7 +41,7 @@
     },
     {
         "id": 4,
-        "new": true,
+        "new": false,
         "title": "Control Scheduling using Taints and Tolerations with Node Affinity",
         "tags": [
             "Kubernetes"
@@ -51,5 +51,18 @@
         "date": "2024-03-07",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/taints-tolerations-affinity.md",
         "tldr": "A combination of Taints and Toleration's, and Node Affinity rules can be used together to completely dedicate nodes for specific pods."
+    },
+    {
+        "id": 5,
+        "new": true,
+        "title": "Up and Running with Kind",
+        "tags": [
+            "Kubernetes"
+        ],
+        "slug": "kind-up-and-running",
+        "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/k8s-banner.webp",
+        "date": "2024-12-27",
+        "markdown": "https://jimcrews.github.io/crewsj.github.io/kubernetes-kind-setup.md",
+        "tldr": "Learn how to set up a local Kubernetes cluster using kind (Kubernetes IN Docker). This guide walks you through installing the necessary tools (Docker, Kubectl, and kind), creating a 4-node cluster with a simple configuration file, verifying the cluster status, and deleting the cluster when done. Perfect for local development and testing."
     }
 ]
