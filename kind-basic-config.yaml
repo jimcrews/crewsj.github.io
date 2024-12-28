@@ -1,8 +1,13 @@
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
-name: kind-cluster-01
+name: playground
 nodes:
 - role: control-plane
+  extraPortMappings:
+  - containerPort: 30001
+    hostPort: 30001
+    listenAddress: "0.0.0.0"
+    protocol: tcp
 - role: worker
 - role: worker
 - role: worker
