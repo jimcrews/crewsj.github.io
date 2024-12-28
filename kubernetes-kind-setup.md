@@ -35,21 +35,17 @@ Create the cluser:
 kind create cluster --config ./kind-basic-config.yaml
 ```
 
-
 ### Verify the Cluster
 
  - List the clusters: `kind get clusters`
  - Use `kubectl` to get nodes: `k get nodes`
  - List docker containers: `docker ps`
 
-### Delete the Cluster
-``` shell
-kind delete cluster --name playground
-```
+
 
 ## Test NodePort Connection
 
-Create a Pod for testing web connectivity from outside the cluster
+Create an nginx Pod for testing web connectivity from outside the cluster nodes network:
 
 ``` yaml
 apiVersion: v1
@@ -66,15 +62,21 @@ spec:
 
 ```
 
-Create a NodePort service that matches the Kind cluster NodePort config
+Create a NodePort service that matches the Kind cluster NodePort config:
+
+``` shell
+k create svc nodeport my-np --tcp=30001:80 --dry-run=client -o yaml
+```
+
+Update the selectors to point to the pod created above. Result should look like:
 
 ``` yaml
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: my-ns
-  name: my-ns
+    app: my-np
+  name: my-np
 spec:
   ports:
   - name: http
@@ -88,7 +90,7 @@ spec:
 
 ```
 
-Test connectivity from you local machine
+Test connectivity from your local machine:
 
 ```
 curl localhost:30001
@@ -121,4 +123,10 @@ Commercial support is available at
 </body>
 </html>
 
+```
+
+## Cleanup
+
+``` shell
+kind delete cluster --name playground
 ```
