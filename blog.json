@@ -64,5 +64,18 @@
         "date": "2024-12-27",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/kubernetes-kind-setup.md",
         "tldr": "Learn how to set up a local Kubernetes cluster using kind (Kubernetes IN Docker). This guide walks you through installing the necessary tools (Docker, Kubectl, and kind), creating a 4-node cluster with a simple configuration file, verifying the cluster status using NodePort, and deleting the cluster when done. Perfect for local development and testing."
+    },
+    {
+        "id": 6,
+        "new": true,
+        "title": "Kuberenets assigns Pods to Nodes in several ways",
+        "tags": [
+            "Kubernetes"
+        ],
+        "slug": "kubernetes-scheduling-101",
+        "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/k8s-banner-2.webp",
+        "date": "2024-12-29",
+        "markdown": "https://jimcrews.github.io/crewsj.github.io/kubernetes-scheduling-101.md",
+        "tldr": "Kubernetes assigns Pods to Nodes in several ways. This article will cover the basics of how Kubernetes assigns Pods to Nodes, including the scheduling process, the role of the kube-scheduler, and the different ways Pods can be assigned to Nodes."
     }
 ]
