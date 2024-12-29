@@ -68,7 +68,7 @@
     {
         "id": 6,
         "new": true,
-        "title": "Kuberenets assigns Pods to Nodes in several ways",
+        "title": "Kubernetes Scheduling: Back to basics",
         "tags": [
             "Kubernetes"
         ],
