@@ -10,7 +10,7 @@
         "slug": "deploy-a-react-app-to-aws",
         "cover": "",
         "date": "2023-12-29",
-        "markdown": "https://jimcrews.github.io/crewsj.github.io/deploy-a-react-app-to-aws.md",
+        "markdown": "https://jimcrews.github.io/crewsj.github.io/aws-deploy-a-react-app.md",
         "tldr": "Host your website on AWS for only a few dollars a month and get hands-on experience across products such as S3, CloudFront, Route53 and Certificate Manager. AWS has been a market leader since its inception. People and businesses of all sizes and orientations, including Fortune 500 companies, are either using or adopting the AWS cloud. But.. its a beast - comprising over 200 products and services, and it's tough to know where to get started. Follow this guide to get your feet wet."
     },
     {
@@ -23,7 +23,7 @@
         "slug": "kubernetes-getting-started",
         "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/k8s-banner.webp",
         "date": "2024-01-15",
-        "markdown": "https://jimcrews.github.io/crewsj.github.io/kubernetes-getting-started.md",
+        "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-getting-started.md",
         "tldr": "Get started learning Kubernetes by creating a local cluster and investigating how pods get placed on particular nodes."
     },
     {
@@ -36,7 +36,7 @@
         "slug": "civo-fastapi",
         "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/civo-logo.png",
         "date": "2024-02-13",
-        "markdown": "https://jimcrews.github.io/crewsj.github.io/civo-fastapi.md",
+        "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-civo-fastapi.md",
         "tldr": "Create a FastAPI application, dockerize it, and deploy it to Civo Cloud. Civo is a kubernetes focused cloud provider that is offering 2 months free credits."
     },
     {
@@ -49,7 +49,7 @@
         "slug": "taints-tolerations-affinity",
         "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/Kubernetes-Scheduling.png",
         "date": "2024-03-07",
-        "markdown": "https://jimcrews.github.io/crewsj.github.io/taints-tolerations-affinity.md",
+        "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-taints-tolerations-affinity.md",
         "tldr": "A combination of Taints and Toleration's, and Node Affinity rules can be used together to completely dedicate nodes for specific pods."
     },
     {
@@ -60,9 +60,9 @@
             "Kubernetes"
         ],
         "slug": "kind-up-and-running",
-        "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/k8s-banner-2.webp",
+        "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/kind-banner.png",
         "date": "2024-12-27",
-        "markdown": "https://jimcrews.github.io/crewsj.github.io/kubernetes-kind-setup.md",
+        "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-kind-setup.md",
         "tldr": "Learn how to set up a local Kubernetes cluster using kind (Kubernetes IN Docker). This guide walks you through installing the necessary tools (Docker, Kubectl, and kind), creating a 4-node cluster with a simple configuration file, verifying the cluster status using NodePort, and deleting the cluster when done. Perfect for local development and testing."
     },
     {
@@ -75,7 +75,20 @@
         "slug": "kubernetes-scheduling-101",
         "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/k8s-banner-2.webp",
         "date": "2024-12-29",
-        "markdown": "https://jimcrews.github.io/crewsj.github.io/kubernetes-scheduling-101.md",
+        "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-scheduling-101.md",
         "tldr": "Kubernetes assigns Pods to Nodes in several ways. This article will cover the basics of how Kubernetes assigns Pods to Nodes, including the scheduling process, the role of the kube-scheduler, and the different ways Pods can be assigned to Nodes."
+    },
+    {
+        "id": 7,
+        "new": true,
+        "title": "Kubernetes Authentication and Authorization: Getting Started",
+        "tags": [
+            "Kubernetes"
+        ],
+        "slug": "kubernetes-authentication-authorization-getting-started",
+        "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/k8s-security-banner.png",
+        "date": "2025-01-02",
+        "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-authentication-authorization-01.md",
+        "tldr": "Create and manage user access in your KIND cluster. Practice creating a user, assigning roles and role bindings, and testing access."
     }
 ]
