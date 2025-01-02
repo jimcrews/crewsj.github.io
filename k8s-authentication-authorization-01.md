@@ -1,4 +1,4 @@
-Create a new user using my KIND cluster by going through the following steps:
+Using a local KIND cluster, follow these steps to practice setting up new users and groups.
 
 1. Test Access: Verify current access permissions.
 2. Create Private Key and CSR: Generate a private key and Certificate Signing Request (CSR) for the new user.
@@ -12,15 +12,12 @@ Create a new user using my KIND cluster by going through the following steps:
 10. Test Access: Verify the new user's access permissions.
 
 ## Test access
-
-### Can I..
+Let's begin by seeing what access looks like before touching anything. This is done by using the `kubectl auth` commands **can-i** and **whoami**:
 
 ``` shell
 k auth can-i get pod
 k auth can-i get pod --as adam # NO
 ```
-
-#### whoami
 
 ``` shell
 k auth whoami
@@ -28,7 +25,7 @@ k auth whoami
 
 ## Create private key and CSR for user
 
-As Adam (new user) - create a private key and csr:
+Imagine there is a new starter called Adam that we as an admin need to provide access to the cluster. As Adam, start the process by creating a private key and csr:
 
 ``` shell
 openssl genrsa -out adam.key 2048
@@ -37,7 +34,7 @@ openssl req -new -key adam.key -out adam.csr -subj "/CN=adam"
 
 ## Create Certificate Signing Request
 
-As a K8s admin - get csr from new user and create K8s Certificate Signing Request. First base64 encode the csr and remove line breaks:
+As an admin, next - get the csr from Adam and create the Kubernetes Certificate Signing Request. We must first base64 encode the csr and remove line breaks:
 
 ``` shell
 cat adam.csr | base64 | tr -d "\n"
@@ -69,7 +66,7 @@ k get csr adam -o jsonpath='{.status.certificate}'| base64 -d > adam.crt
 
 
 ## Create a Role
-Create a Role to get pods: `k create role pod-reader --verb=get --verb=list --resource=pods`:
+Create a new Role that will allow its memebers to get pods: `k create role pod-reader --verb=get --verb=list --resource=pods`:
 
 ``` yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -87,13 +84,15 @@ Apply manifest to create new role: `k apply -f role_pod_reader.yaml`
 
 ## Create a Role Binding
 
-Bind a Role to a User
+A Role Binding is required to map a User to a Role. Create a new Role Binding for Adam to join the pod-reader role.
 
 ``` shell
 k create rolebinding pod-reader-binding-adam --role=pod-reader --user=adam
 ```
 
 ### Test access
+
+Adam can now get pods:
 
 ``` shell
 k auth can-i get pods --as adam # YES
