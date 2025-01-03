@@ -34,7 +34,7 @@ openssl req -new -key adam.key -out adam.csr -subj "/CN=adam"
 
 ## Create Certificate Signing Request
 
-As an admin, next - get the csr from Adam and create the Kubernetes Certificate Signing Request. We must first base64 encode the csr and remove line breaks:
+As an admin, next - get the csr from Adam and creates the Kubernetes Certificate Signing Request object. (We must first base64 encode the csr and remove line breaks):
 
 ``` shell
 cat adam.csr | base64 | tr -d "\n"
@@ -169,4 +169,25 @@ k create clusterrolebinding node-reader-binding-adam --clusterrole=node-reader -
 
 ``` shell
 k auth can-i get nodes --as adam # YES
+```
+
+
+## Create a Service Account
+
+Create an account to be used by a build service such as Jenkins:
+
+``` shell
+k create sa build-sa
+```
+
+Create a token for the service account:
+
+``` yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: build-robot-secret
+  annotations:
+    kubernetes.io/service-account.name: build-sa
+type: kubernetes.io/service-account-token
 ```
