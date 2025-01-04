@@ -1,28 +1,28 @@
-This guide walks you through how to manage and persist data using Docker volumes and Kubernetes Persistent Volumes (PVs) and Persistent Volume Claims (PVCs). It starts with creating and using Docker volumes, then shows how to mount volumes directly from your filesystem. We also cover setting up Persistent Volumes and Persistent Volume Claims in a KIND cluster.
+This guide walks you through how to manage and persist data using Docker volumes and Kubernetes Persistent Volumes (PVs) and Persistent Volume Claims (PVCs). We'll start by reviewing Docker storage options, then jump into Kubernetes land by using Persistent Volumes and Persistent Volume Claims in a local KIND cluster.
 
-Lets start by persisting data in Docker Containers, without Kubernetes.
+Lets start by persisting data in Docker Containers..
 
 ### Docker Volumes
 
-1. Create a Docker Volume
+Create a Docker Volume:
 ``` shell
 docker volume create my-volume
 ```
 
-2.  Create Docker Container using Volume
+Create a Docker Container using the above Volume:
 ``` shell
 docker run -it --rm --mount source=my-volume,destination=/my-data/ ubuntu:22.04
 ```
 
 ## Docker Volume Mounts
 
-Instead of creating a Docker Volume, mount a folder directly from filesystem:
-
+Instead of creating a Docker Volume, lets mount a folder directly from my desktop filesystem:
 ``` shell
 docker run -it --rm --mount type=bind,source="${HOME}"/data,destination=/my-data ubuntu:22.04
 ```
 
 ## Kubernetes Volumes using HostPath
+Jumping into Kubernetes, let's begin by using hostPath directly in a Pod manifest.
 
 A **hostPath** volume mounts a file or directory from the host node's filesystem into your Pod. This Pod will generate a random number and append it to **/opt/number.txt**.
 The below alpine pod's /opt directory is mounted to the nodes /tmp directory.
