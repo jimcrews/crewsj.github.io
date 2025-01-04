@@ -10,7 +10,7 @@ In this guide, we will set up a local Kubernetes cluster using Kind (Kubernetes 
 
 ## Creating a Cluster
 
-Once Kind is installed, create a Kind config file to specfiy cluster options. We'll start with a 4 node cluster.
+Once Kind is installed, create a Kind config file to specify cluster options. We'll start with a 4 node cluster.
 To use port mappings with NodePort, the kind node containerPort and the service nodePort needs to be equal.
 
 ``` yaml
@@ -29,7 +29,7 @@ nodes:
 - role: worker
 ```
 
-Create the cluser: 
+Create the cluster: 
 
 ``` shell
 kind create cluster --config ./kind-basic-config.yaml
@@ -96,7 +96,7 @@ Test connectivity from your local machine:
 curl localhost:30001
 ```
 
-You should recive the nginx welcome page
+You should receive the nginx welcome page
 
 ``` shell
 <!DOCTYPE html>

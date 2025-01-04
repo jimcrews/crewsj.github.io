@@ -66,7 +66,7 @@ k get csr adam -o jsonpath='{.status.certificate}'| base64 -d > adam.crt
 
 
 ## Create a Role
-Create a new Role that will allow its memebers to get pods: `k create role pod-reader --verb=get --verb=list --resource=pods`:
+Create a new Role that will allow its members to get pods: `k create role pod-reader --verb=get --verb=list --resource=pods`:
 
 ``` yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -100,7 +100,7 @@ k auth can-i get pods --as adam # YES
 
 ## Log in as New User
 
-As Adam (new user), update kube config in order to use cluser with kubectl:
+As Adam (new user), update kube config in order to use cluster with kubectl:
 
  - Add new credential
 

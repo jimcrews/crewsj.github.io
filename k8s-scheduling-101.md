@@ -2,7 +2,7 @@ I'm revisiting Kubernetes scheduling to cement my learning. Kubernetes has some 
 
 ## Manual Scheduling
 
-For new pods joing clusters without a Scheduler:
+For new pods joining clusters without a Scheduler:
 
 `nodeName` can be added manually to the Pod definition file which will assign the pod to the specified node.
 `nodeName` is a child of `spec`:

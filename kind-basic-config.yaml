@@ -8,6 +8,9 @@ nodes:
     hostPort: 30001
     listenAddress: "0.0.0.0"
     protocol: tcp
+  extraMounts:
+  - hostPath: /home/jimc/data
+    containerPath: /data
 - role: worker
 - role: worker
 - role: worker

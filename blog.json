@@ -90,5 +90,18 @@
         "date": "2025-01-02",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-authentication-authorization-01.md",
         "tldr": "Create and manage user access in your KIND cluster. Practice creating a user, assigning roles and role bindings, and testing access."
+    },
+    {
+        "id": 8,
+        "new": true,
+        "title": "Kubernetes Storage: First Look",
+        "tags": [
+            "Kubernetes"
+        ],
+        "slug": "kubernetes-storage-first-look",
+        "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/k8s-storage-banner.webp",
+        "date": "2025-01-04",
+        "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-storage-01.md",
+        "tldr": "Continuing my journey into Kubernetes, I'm going to take a look at storage using my local KIND cluster. I'll quickly review how docker deals with storage, then I'll be jumping into Kubernetes by creating a Persistent Volume and Persistent Volume Claim, and then deploying a Pod that uses the Persistent Volume Claim."
     }
 ]
