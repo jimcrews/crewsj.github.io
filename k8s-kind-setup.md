@@ -1,7 +1,3 @@
-# Setting Up a Local Kubernetes Cluster with kind
-
-In this guide, we will set up a local Kubernetes cluster using Kind (Kubernetes IN Docker). Kind is a tool for running local Kubernetes clusters using Docker container nodes. It is primarily designed for testing Kubernetes itself, but it can also be used for local development or CI. We will also demonstrate how to test using NodePort for port mappings.
-
 ## Prerequisites
 
  - [Docker](https://docs.docker.com)
@@ -11,7 +7,7 @@ In this guide, we will set up a local Kubernetes cluster using Kind (Kubernetes 
 ## Creating a Cluster
 
 Once Kind is installed, create a Kind config file to specify cluster options. We'll start with a 4 node cluster.
-To use port mappings with NodePort, the kind node containerPort and the service nodePort needs to be equal.
+Because we are using KIND, we need to take additional steps to expose the Cluster to the local computer. To do this, we need to use port mappings. The kind `containerPort` and the service `nodePort` needs to be equal.
 
 ``` yaml
 kind: Cluster
@@ -32,7 +28,7 @@ nodes:
 Create the cluster: 
 
 ``` shell
-kind create cluster --config ./kind-basic-config.yaml
+kind create cluster --config ./kind-ports-config.yaml
 ```
 
 ### Verify the Cluster
@@ -90,40 +86,53 @@ spec:
 
 ```
 
-Test connectivity from your local machine:
+Test connectivity from your local machine. You should receive the nginx welcome page:
 
 ```
 curl localhost:30001
 ```
 
-You should receive the nginx welcome page
+## Internal Communication
 
-``` shell
-<!DOCTYPE html>
-<html>
-<head>
-<title>Welcome to nginx!</title>
-<style>
-html { color-scheme: light dark; }
-body { width: 35em; margin: 0 auto;
-font-family: Tahoma, Verdana, Arial, sans-serif; }
-</style>
-</head>
-<body>
-<h1>Welcome to nginx!</h1>
-<p>If you see this page, the nginx web server is successfully installed and
-working. Further configuration is required.</p>
+Now we need to expose PODs for internal communication. We will create a new Pod called `backend` that needs to communicate with Pod `nginx`.
+Create the Pod:
 
-<p>For online documentation and support please refer to
-<a href="http://nginx.org/">nginx.org</a>.<br/>
-Commercial support is available at
-<a href="http://nginx.com/">nginx.com</a>.</p>
+`k run backend --image=nginx --labels="tier=backend"`
 
-<p><em>Thank you for using nginx.</em></p>
-</body>
-</html>
+Test comms out of the box by trying to telnet `backend` from inside `nginx`:
 
+``` bash
+k exec -it nginx -- bash
+apt-get update && apt-get install telnet -y
+
+telnet backend 80 # FAIL
 ```
+
+A service of type ClusterIP needs to be created to expose the backend application to nginx.
+
+Create Service ClusterIP
+
+``` yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-svc
+spec:
+  selector:
+    tier: backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+```
+
+``` bash
+k exec -it nginx -- bash
+
+telnet backend-svc 80 # SUCCEEDS
+```
+
+The **Service Name** is now the link to the backend Pod
 
 ## Cleanup
 
