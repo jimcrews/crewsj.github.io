@@ -1,3 +1,10 @@
+# Table of Contents
+
+- [Prerequisites](#prerequisites)
+- [KIND Cluster Pods and Services](#creating-a-cluster)
+- [Build / Deploy / Expose Custom Django Container](#build--deploy--expose-custom-django-container)
+- [Cleanup](#cleanup)
+
 ## Prerequisites
 
  - [Docker](https://docs.docker.com)
@@ -133,6 +140,93 @@ telnet backend-svc 80 # SUCCEEDS
 ```
 
 The **Service Name** is now the link to the backend Pod
+
+
+## Build / Deploy / Expose Custom Django Container
+
+Create sample app docker image (using the Dockerfile below):
+
+``` dockerfile
+FROM python:3.6-slim
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+RUN mkdir /app
+WORKDIR /app
+RUN pip install --upgrade pip
+
+COPY requirements.txt /app
+COPY devops /app
+
+RUN pip install -r requirements.txt && cd devops
+
+EXPOSE 8000
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+```
+
+Build image and push to dockerhub:
+
+``` shell
+docker build -t jimcr/django-sample-app-demo:v1 .
+
+# Push to dockerhub
+docker login
+docker push jimcr/django-sample-app-demo:v1
+```
+
+Create Deployment (the **containerPort** is the port exposed in the Container):
+
+``` yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: django-deploy
+  name: django-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: django-deploy
+  template:
+    metadata:
+      labels:
+        app: django-deploy
+    spec:
+      containers:
+      - image: jimcr/django-sample-app-demo:v1
+        name: django-sample-app-demo
+        ports:
+        - containerPort: 8000
+```
+
+I can now access the website from within the cluster only. If I docker exec into the KIND control plane node, I can curl the IP address of the worker node the app is currently hosted on:
+
+``` shell
+docker exec -it 73216bf1c0c9 /bin/bash
+
+curl -L http://10.244.1.3:8000/demo
+```
+
+Create NodePort to expose service to localhost:
+
+``` yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: django
+spec:
+  type: NodePort
+  selector:
+    app: django-deploy
+  ports:
+    - port: 80
+      targetPort: 8000
+      nodePort: 30001
+```
+
+Browse to http://localhost:30001/demo/ to test
 
 ## Cleanup
 
