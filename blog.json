@@ -103,5 +103,18 @@
         "date": "2025-01-04",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-storage-01.md",
         "tldr": "Continuing my journey into Kubernetes, I'm going to take a look at storage using my local KIND cluster. I'll quickly review how docker deals with storage, then I'll be jumping into Kubernetes by creating a Persistent Volume and Persistent Volume Claim, and then deploying a Pod that uses the Persistent Volume Claim."
+    },
+    {
+        "id": 9,
+        "new": true,
+        "title": "Kubernetes Networking: Local Cluster",
+        "tags": [
+            "Kubernetes"
+        ],
+        "slug": "kubernetes-storage-first-look",
+        "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/Kubernetes-Scheduling.png",
+        "date": "2025-01-05",
+        "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-network-policy-01.md",
+        "tldr": "This tutorial walks you through setting up network policies in Kubernetes using a KIND cluster. You'll learn how to disable KIND's default network plugin and install Calico, a third-party networking solution that supports network policies. The guide then demonstrates creating a 3-tier application with front-end, back-end, and database pods and services. You'll test connectivity between these pods and apply a network policy to restrict database access to only the back-end pod on port 3306. This hands-on approach helps you understand how to control traffic between pods using network policies."
     }
 ]
