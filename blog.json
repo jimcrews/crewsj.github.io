@@ -107,7 +107,7 @@
     {
         "id": 9,
         "new": true,
-        "title": "Kubernetes Networking: Local Cluster",
+        "title": "Kubernetes Networking: Getting Started",
         "tags": [
             "Kubernetes"
         ],
