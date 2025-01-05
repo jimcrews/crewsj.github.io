@@ -1,9 +1,7 @@
-# Table of Contents
-
-- [Prerequisites](#prerequisites)
-- [KIND Cluster Pods and Services](#creating-a-cluster)
-- [Build / Deploy / Expose Custom Django Container](#build--deploy--expose-custom-django-container)
-- [Cleanup](#cleanup)
+- Prerequisites
+- KIND Cluster Pods and Services
+- Build / Deploy / Expose Custom Django Container
+- Cleanup
 
 ## Prerequisites
 
