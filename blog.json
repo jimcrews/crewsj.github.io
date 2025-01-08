@@ -116,5 +116,18 @@
         "date": "2025-01-05",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-network-policy-01.md",
         "tldr": "This tutorial walks you through setting up network policies in Kubernetes using a KIND cluster. You'll learn how to disable KIND's default network plugin and install Calico, a third-party networking solution that supports network policies. The guide then demonstrates creating a 3-tier application with front-end, back-end, and database pods and services. You'll test connectivity between these pods and apply a network policy to restrict database access to only the back-end pod on port 3306. This hands-on approach helps you understand how to control traffic between pods using network policies."
+    },
+    {
+        "id": 10,
+        "new": true,
+        "title": "Kubernetes on Virtualbox",
+        "tags": [
+            "Kubernetes"
+        ],
+        "slug": "kubernetes-on-virtualbox",
+        "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/k8s-banner-2.webp",
+        "date": "2025-01-08",
+        "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-virtualbox-vagrant.md",
+        "tldr": "The document provides a step-by-step guide for setting up a Kubernetes cluster on local Virtual Machines using VirtualBox and Vagrant. It includes instructions for provisioning VMs, installing Kubernetes components, configuring container runtimes, initializing the control-plane node, setting up networking with flannel, and joining worker nodes to the cluster."
     }
 ]
