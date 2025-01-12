@@ -129,5 +129,18 @@
         "date": "2025-01-08",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-virtualbox-vagrant.md",
         "tldr": "The document provides a step-by-step guide for setting up a Kubernetes cluster on local Virtual Machines using VirtualBox and Vagrant. It includes instructions for provisioning VMs, installing Kubernetes components, configuring container runtimes, initializing the control-plane node, setting up networking with flannel, and joining worker nodes to the cluster."
+    },
+    {
+        "id": 11,
+        "new": true,
+        "title": "Backup and Restore ETCD",
+        "tags": [
+            "Kubernetes"
+        ],
+        "slug": "backup-restore-etcd",
+        "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/backup-banner.jpg",
+        "date": "2025-01-12",
+        "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-etcd-backup-restore.md",
+        "tldr": "This guide will walk you through backing up and restoring etcd in a Kubernetes cluster. You'll learn how to back up etcd data using the etcdctl tool, restore etcd data from a backup, and test the restored data by verifying that the cluster is operational."
     }
 ]
