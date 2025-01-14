@@ -145,13 +145,13 @@ The default configuration can be generated via `containerd config default > /etc
 containerd config default | sed 's/SystemdCgroup = false/SystemdCgroup = true/' | sudo tee /etc/containerd/config.toml
 ```
 
-Restart containerd on all nodes: `sudo systemctl restart containerd`
+**Restart containerd on all nodes**: `sudo systemctl restart containerd`
 
 ## Initializing your control-plane node
 
 We need to specify a POD subnet CIDR - we will use the common one (which we need to specify). We will also need to advertise api server address (which we will set as the local ip for the controlplane vm).
 
-On the controlplane vm:
+On the controlplane vm (**substitute the controlplane ip address**):
 
 ``` shell
 sudo kubeadm init --apiserver-advertise-address=192.168.1.21 --pod-network-cidr="10.244.0.0/16" --upload-certs
@@ -227,6 +227,14 @@ Wait for the flannel pod to restart.
 
 Use the `kubeadm join` command from above on each of the worker nodes
 
+
+### Troubleshooting
+
+I had Pods in error - plugin type="flannel" failed (add): failed to set bridge addr: "cni0" already has an IP address different from 10.244.1.1/24.
+I needed to delete the interface:
+``` shell
+ip link delete cni0
+```
 
 ## Cleanup
 
