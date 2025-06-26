@@ -54,7 +54,7 @@
     },
     {
         "id": 5,
-        "new": true,
+        "new": false,
         "title": "Up and Running with Kind",
         "tags": [
             "Kubernetes"
@@ -67,7 +67,7 @@
     },
     {
         "id": 6,
-        "new": true,
+        "new": false,
         "title": "Kubernetes Scheduling: Back to basics",
         "tags": [
             "Kubernetes"
@@ -80,7 +80,7 @@
     },
     {
         "id": 7,
-        "new": true,
+        "new": false,
         "title": "Kubernetes Authentication and Authorization: Getting Started",
         "tags": [
             "Kubernetes"
@@ -93,7 +93,7 @@
     },
     {
         "id": 8,
-        "new": true,
+        "new": false,
         "title": "Kubernetes Storage: First Look",
         "tags": [
             "Kubernetes"
@@ -106,7 +106,7 @@
     },
     {
         "id": 9,
-        "new": true,
+        "new": false,
         "title": "Kubernetes Networking: Getting Started",
         "tags": [
             "Kubernetes"
@@ -119,7 +119,7 @@
     },
     {
         "id": 10,
-        "new": true,
+        "new": false,
         "title": "Kubernetes on Virtualbox",
         "tags": [
             "Kubernetes"
@@ -132,7 +132,7 @@
     },
     {
         "id": 11,
-        "new": true,
+        "new": false,
         "title": "Backup and Restore ETCD",
         "tags": [
             "Kubernetes"
@@ -142,5 +142,18 @@
         "date": "2025-01-12",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-etcd-backup-restore.md",
         "tldr": "This guide will walk you through backing up and restoring etcd in a Kubernetes cluster. You'll learn how to back up etcd data using the etcdctl tool, restore etcd data from a backup, and test the restored data by verifying that the cluster is operational."
+    },
+    {
+        "id": 12,
+        "new": true,
+        "title": "Quickstart: Python Projects with Poetry",
+        "tags": [
+            "Python"
+        ],
+        "slug": "python-poetry-quickstart",
+        "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/python_banner.jpg",
+        "date": "2025-06-26",
+        "markdown": "https://jimcrews.github.io/crewsj.github.io/python-poetry-quickstart.md",
+        "tldr": "Use Poetry to manage Python project dependencies in isolated environments. Create your project with poetry new, add dependencies with poetry add, and run scripts or tests inside the environment using poetry run. Keep your system clean and make testing simple and reliable"
     }
 ]
