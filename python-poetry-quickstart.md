@@ -1,10 +1,8 @@
-# 🧪 How to Test Python Scripts Without Installing Libraries Globally
-
 This guide helps you set up and test Python apps in an isolated environment using [Poetry](https://python-poetry.org/), without polluting your system Python or globally installing packages.
 
 ---
 
-## ✅ Step 1: Install Poetry Using Pipx
+## Step 1: Install Poetry Using Pipx
 
 It's recommended to use [pipx](https://pypa.github.io/pipx/) for installing CLI tools like Poetry.
 
@@ -19,7 +17,7 @@ pipx install poetry
 
 ---
 
-## 🗂️ Step 2: Create Your Project
+## Step 2: Create Your Project
 
 ```shell
 poetry new scraper_app --src
@@ -30,7 +28,7 @@ This sets up a project structure where your source code lives in `src/` and test
 
 ---
 
-## 📦 Step 3: Add Dependencies
+## Step 3: Add Dependencies
 
 ```shell
 poetry add requests beautifulsoup4
@@ -39,7 +37,7 @@ poetry add --dev pytest
 
 ---
 
-## 🛠️ Step 4: Write Your Code
+## Step 4: Write Your Code
 
 - Write your main script inside:  
   `src/scraper_app/scraper.py`
@@ -49,7 +47,7 @@ poetry add --dev pytest
 
 ---
 
-## 🧪 Step 5: Run the Script or Tests
+## Step 5: Run the Script or Tests
 
 ### Option A: Run the Script
 
