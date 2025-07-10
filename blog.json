@@ -11,6 +11,7 @@
         "cover": "",
         "date": "2023-12-29",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/aws-deploy-a-react-app.md",
+        "component": "",
         "postCoverPic": "",
         "tldr": "Host your website on AWS for only a few dollars a month and get hands-on experience across products such as S3, CloudFront, Route53 and Certificate Manager. AWS has been a market leader since its inception. People and businesses of all sizes and orientations, including Fortune 500 companies, are either using or adopting the AWS cloud. But.. its a beast - comprising over 200 products and services, and it's tough to know where to get started. Follow this guide to get your feet wet."
     },
@@ -25,6 +26,7 @@
         "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/k8s-banner.webp",
         "date": "2024-01-15",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-getting-started.md",
+        "component": "",
         "postCoverPic": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/devops_banner.jpg",
         "tldr": "Get started learning Kubernetes by creating a local cluster and investigating how pods get placed on particular nodes."
     },
@@ -39,6 +41,7 @@
         "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/civo-logo.png",
         "date": "2024-02-13",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-civo-fastapi.md",
+        "component": "",
         "postCoverPic": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/devops_banner.jpg",
         "tldr": "Create a FastAPI application, dockerize it, and deploy it to Civo Cloud. Civo is a kubernetes focused cloud provider that is offering 2 months free credits."
     },
@@ -53,6 +56,7 @@
         "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/Kubernetes-Scheduling.png",
         "date": "2024-03-07",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-taints-tolerations-affinity.md",
+        "component": "",
         "postCoverPic": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/devops_banner.jpg",
         "tldr": "A combination of Taints and Toleration's, and Node Affinity rules can be used together to completely dedicate nodes for specific pods."
     },
@@ -67,6 +71,7 @@
         "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/k8s-banner-2.webp",
         "date": "2024-12-27",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-kind-setup.md",
+        "component": "",
         "postCoverPic": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/devops_banner.jpg",
         "tldr": "In this guide, we will set up a local Kubernetes cluster using Kind (Kubernetes IN Docker). Kind is a tool for running local Kubernetes clusters using Docker container nodes. This guide walks you through installing the necessary tools (Docker, Kubectl, and kind), creating a 4-node cluster with a simple configuration file, and verifying the cluster can expose services to the host machine."
     },
@@ -81,6 +86,7 @@
         "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/k8s-banner-2.webp",
         "date": "2024-12-29",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-scheduling-101.md",
+        "component": "",
         "postCoverPic": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/devops_banner.jpg",
         "tldr": "Kubernetes assigns Pods to Nodes in several ways. This article will cover the basics of how Kubernetes assigns Pods to Nodes, including the scheduling process, the role of the kube-scheduler, and the different ways Pods can be assigned to Nodes."
     },
@@ -95,6 +101,7 @@
         "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/k8s-security-banner.png",
         "date": "2025-01-02",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-authentication-authorization-01.md",
+        "component": "",
         "postCoverPic": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/devops_banner.jpg",
         "tldr": "Create and manage user access in your KIND cluster. Practice creating a user, assigning roles and role bindings, and testing access."
     },
@@ -109,6 +116,7 @@
         "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/k8s-storage-banner.webp",
         "date": "2025-01-04",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-storage-01.md",
+        "component": "",
         "postCoverPic": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/devops_banner.jpg",
         "tldr": "Continuing my journey into Kubernetes, I'm going to take a look at storage using my local KIND cluster. I'll quickly review how docker deals with storage, then I'll be jumping into Kubernetes by creating a Persistent Volume and Persistent Volume Claim, and then deploying a Pod that uses the Persistent Volume Claim."
     },
@@ -123,6 +131,7 @@
         "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/Kubernetes-Scheduling.png",
         "date": "2025-01-05",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-network-policy-01.md",
+        "component": "",
         "postCoverPic": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/devops_banner.jpg",
         "tldr": "This tutorial walks you through setting up network policies in Kubernetes using a KIND cluster. You'll learn how to disable KIND's default network plugin and install Calico, a third-party networking solution that supports network policies. The guide then demonstrates creating a 3-tier application with front-end, back-end, and database pods and services. You'll test connectivity between these pods and apply a network policy to restrict database access to only the back-end pod on port 3306. This hands-on approach helps you understand how to control traffic between pods using network policies."
     },
@@ -137,6 +146,7 @@
         "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/k8s-banner-2.webp",
         "date": "2025-01-08",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-virtualbox-vagrant.md",
+        "component": "",
         "postCoverPic": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/devops_banner.jpg",
         "tldr": "The document provides a step-by-step guide for setting up a Kubernetes cluster on local Virtual Machines using VirtualBox and Vagrant. It includes instructions for provisioning VMs, installing Kubernetes components, configuring container runtimes, initializing the control-plane node, setting up networking with flannel, and joining worker nodes to the cluster."
     },
@@ -151,6 +161,7 @@
         "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/backup-banner.jpg",
         "date": "2025-01-12",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/k8s-etcd-backup-restore.md",
+        "component": "",
         "postCoverPic": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/devops_banner.jpg",
         "tldr": "This guide will walk you through backing up and restoring etcd in a Kubernetes cluster. You'll learn how to back up etcd data using the etcdctl tool, restore etcd data from a backup, and test the restored data by verifying that the cluster is operational."
     },
@@ -165,12 +176,13 @@
         "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/python_banner.jpg",
         "date": "2025-06-26",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/python-poetry-quickstart.md",
+        "component": "",
         "postCoverPic": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/python_programming_banner.webp",
         "tldr": "Use Poetry to manage Python project dependencies in isolated environments. Create your project with poetry new, add dependencies with poetry add, and run scripts or tests inside the environment using poetry run. Keep your system clean and make testing simple and reliable"
     },
     {
         "id": 13,
-        "new": true,
+        "new": false,
         "title": "Vege Garden Day 1: My Backyard Garden Journey",
         "tags": [
             "Garden"
@@ -179,7 +191,23 @@
         "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/vege-banner.jpg",
         "date": "2025-06-29",
         "markdown": "https://jimcrews.github.io/crewsj.github.io/farming-hello-world.md",
+        "component": "",
         "postCoverPic": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/vege-banner-2.jpg",
         "tldr": "Started a backyard garden on June 29 (winter in Australia). Bought quality soil, a raised garden bed, compost bin, and lettuce seeds — total so far $725. Planting seeds in trays now to prepare for transplanting later. Will keep updating costs and progress."
+    },
+    {
+        "id": 14,
+        "new": true,
+        "title": "Plinko",
+        "tags": [
+            "Gambling Exposed"
+        ],
+        "slug": "plinko",
+        "cover": "https://s3.ap-southeast-2.amazonaws.com/blog.crewsj.net/shared_images/gambling_banner_01.jpeg",
+        "date": "2025-07-11",
+        "markdown": "",
+        "component": "PlinkoComponent",
+        "postCoverPic": "",
+        "tldr": ""
     }
 ]
