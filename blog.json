@@ -208,6 +208,6 @@
         "markdown": "",
         "component": "PlinkoComponent",
         "postCoverPic": "",
-        "tldr": "Demo to show the insane odds of Plinko"
+        "tldr": "This version of Plinko gives each bucket an equal chance. No rigging. No bias. Pure randomness. 12 rows of pegs - 50/50 left/right at each one. There are 11 buckets at the bottom - Even if you land near the center, you're still probably walking away with less than you started."
     }
 ]
